@@ -737,6 +737,11 @@ void CWinSerialPort::ReceiveChar(CWinSerialPort* port)
 //			rx_buffer[rx_count++] = (WPARAM) RXBuff;
 			port->m_szReadBuffer[port->m_nReadSize] = (WPARAM) RXBuff;
 			(port->m_nReadSize)++;
+			if((port->m_nReadSize) == port->m_nReadBufferSize)
+			{
+				memset(port->m_szReadBuffer,0,port->m_nReadBufferSize);
+				(port->m_nReadSize) = 0;
+			}
 
 		// notify parent that a byte was received
 		::SendMessage((port->m_pOwner), WM_COMM_RXCHAR, (WPARAM) RXBuff, (LPARAM) port->m_nPortNr);

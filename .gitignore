@@ -51,5 +51,6 @@ Temporary Items
 /CWinSerialPort/Debug/
 /Debug/
 /ipch/
+*.opensdf
 *.sdf
 *.suo
