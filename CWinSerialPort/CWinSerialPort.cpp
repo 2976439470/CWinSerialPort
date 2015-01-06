@@ -22,11 +22,6 @@
 
 #include <assert.h>
 # include <string>
-using namespace std;
-
-BYTE rx_buffer[100];
-int rx_count = 0;
-
 //
 // Constructor
 //
@@ -734,7 +729,6 @@ void CWinSerialPort::ReceiveChar(CWinSerialPort* port)
 				
 		LeaveCriticalSection(&port->m_csCommunicationSync);
 
-//			rx_buffer[rx_count++] = (WPARAM) RXBuff;
 			port->m_szReadBuffer[port->m_nReadSize] = (WPARAM) RXBuff;
 			(port->m_nReadSize)++;
 			if((port->m_nReadSize) == port->m_nReadBufferSize)
